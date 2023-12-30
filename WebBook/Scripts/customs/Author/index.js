@@ -1,0 +1,1 @@
+﻿$("#MainContent_txtData").attr("placeholder", "Search for...");

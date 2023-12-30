@@ -1,0 +1,31 @@
+﻿body {
+    background-color: #babfff;
+}
+
+.control-label {
+    font-weight: bold;
+}
+
+.form-control {
+    border: 2px solid black;
+}
+
+hr {
+    border: 3px solid black;
+}
+
+#MainContent_btnSearch {
+    border: 1px solid black;
+    border-radius: 4px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.pad-5 {
+    padding-top: 3%;
+}
+
+.details-ico {
+    width: 20px;
+    height: 20px;
+}

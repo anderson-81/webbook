@@ -4,6 +4,7 @@ using Microsoft.Owin.Security;
 using System.Web;
 using System;
 using WebBook.Models;
+using LibCrud;
 
 namespace WebBook.Models
 {
@@ -17,6 +18,7 @@ namespace WebBook.Models
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
+
         }
     }
 

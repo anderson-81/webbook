@@ -9,130 +9,79 @@ namespace LibCrud
 {
     public class Crud
     {
-        public static int Insert_Author(string name, string email, DateTime birthday, char gender, string artisctName, string biography, byte[] picture)
+        private static Crud _instance = null;
+
+        public static Crud getInstance()
         {
-            Author author = new Author();
-            author.Name = name;
-            author.Email = email;
-            author.Birthday = birthday;
-            author.Gender = gender;
-            author.ArtisticName = artisctName;
-            author.Biography = biography;
-            author.Picture = picture;
-            Controller ctr = new Controller(author);
-            return ctr.Insert_Author();
+            if (_instance == null)
+            {
+                _instance = new Crud();
+            }
+            return _instance;
         }
 
-        public static int Edit_Author(int id, string name, string email, DateTime birthday, char gender, string artisctName, string biography, byte[] picture)
+        public int Insert_Author(string name, string email, DateTime birthday, char gender, string artisctName, string biography, byte[] picture)
         {
-            Author author = new Author();
-            author.Id = id;
-            author.Name = name;
-            author.Email = email;
-            author.Birthday = birthday;
-            author.Gender = gender;
-            author.ArtisticName = artisctName;
-            author.Biography = biography;
-            author.Picture = picture;
-            Controller ctr = new Controller(author);
-            return ctr.Edit_Author();
+            return new Controller(new AuthorFactory(0, name, email, birthday, gender, artisctName, biography, picture).GetAuthor()).Insert_Author();
         }
 
-        public static int Delete_Author(int id)
+        public int Edit_Author(int id, string name, string email, DateTime birthday, char gender, string artisctName, string biography, byte[] picture)
         {
-            Author author = new Author();
-            author.Id = id;
-            Controller ctr = new Controller(author);
-            return ctr.Delete_Author();
+            return new Controller(new AuthorFactory(id, name, email, birthday, gender, artisctName, biography, picture).GetAuthor()).Edit_Author();
         }
 
-        public static int Insert_Book(string title, int page, string isbn, decimal price, int author_id, byte[] picture)
+        public int Delete_Author(int id)
         {
-            Book book = new Book();
-            book.Title = title;
-            book.Page = page;
-            book.Isbn = isbn;
-            book.Price = price;
-            book.Picture = picture;
-            Author author = new Author();
-            author.Id = author_id;
-            Controller ctr = new Controller(author, book);
-            return ctr.Insert_Book();
+            return new Controller(new AuthorFactory(id).GetAuthor()).Delete_Author();
         }
 
-        public static int Edit_Book(int id, string title, int page, string isbn, decimal price, byte[] picture)
+        public int Insert_Book(string title, int page, string isbn, decimal price, int author_id, byte[] picture)
         {
-            Book book = new Book();
-            book.Id = id;
-            book.Title = title;
-            book.Page = page;
-            book.Isbn = isbn;
-            book.Price = price;
-            book.Picture = picture;
-            Controller ctr = new Controller(book);
-            return ctr.Edit_Book();
+            return new Controller(new AuthorFactory(author_id).GetAuthor(), new BookFactory(0, title, page, isbn, price, picture).GetBook()).Insert_Book();
         }
 
-        public static int Delete_Book(int id)
+        public int Edit_Book(int id, string title, int page, string isbn, decimal price, byte[] picture)
         {
-            Book book = new Book();
-            book.Id = id;
-            Controller ctr = new Controller(book);
-            return ctr.Delete_Book();
+            return new Controller(new BookFactory(id, title, page, isbn, price, picture).GetBook()).Edit_Book();
         }
 
-        public static Author GetAuthorByID(int id)
+        public int Delete_Book(int id)
         {
-            Author author = new Author();
-            author.Id = id;
-            Controller ctr = new Controller(author);
-            return ctr.GetAuthorByID();
-        }
-        public static List<Author> GetAuthorByName(string name)
-        {
-            Author author = new Author();
-            author.Name = name;
-            Controller ctr = new Controller(author);
-            return ctr.GetAuthorByName();
+            return new Controller(new BookFactory(id).GetBook()).Delete_Book();
         }
 
-        public static List<Book> GetBookByAuthorID(int id)
+        public Author GetAuthorByID(int id)
         {
-            Author author = new Author();
-            author.Id = id;
-            Controller ctr = new Controller(author);
-            return ctr.GetBookByAuthorID();
+            return new Controller(new AuthorFactory(id).GetAuthor()).GetAuthorByID();
+        }
+        public List<Author> GetAuthorByName(string name)
+        {
+            return new Controller(new AuthorFactory(AuthorFactory.OPTION.NAME, name).GetAuthor()).GetAuthorByName();
         }
 
-
-        public static AuthorBook GetBookByISBN(string isbn)
+        public List<Book> GetBookByAuthorID(int id)
         {
-            Book book = new Book();
-            book.Isbn = isbn;
-            Controller ctr = new Controller(book);
-            return ctr.GetBookByISBN();
+            return new Controller(new AuthorFactory(id).GetAuthor()).GetBookByAuthorID();
         }
 
-        public static List<AuthorBook> GetBookByTitle(string title)
+        public AuthorBook GetBookByISBN(string isbn)
         {
-            Book book = new Book();
-            book.Title = title;
-            Controller ctr = new Controller(book);
-            return ctr.GetBookByTitle();
+            return new Controller(new BookFactory(BookFactory.OPTION.ISBN, isbn).GetBook()).GetBookByISBN();
         }
-        public static bool CheckRegisteredEmail(string email)
+
+        public List<AuthorBook> GetBookByTitle(string title)
         {
-            Author author = new Author();
-            author.Email = email;
-            Controller ctr = new Controller(author);
-            return ctr.CheckRegisteredEmail();
+            return new Controller(new BookFactory(BookFactory.OPTION.TITLE, title).GetBook()).GetBookByTitle();
         }
-        public static bool CheckRegisteredISBN(string isbn)
+
+        public bool CheckIfEmailAreRegistered(string email)
         {
-            Book book = new Book();
-            book.Isbn = isbn;
-            Controller ctr = new Controller(book);
-            return ctr.CheckRegisteredISBN();
+            return new Controller(new AuthorFactory(AuthorFactory.OPTION.EMAIL, email).GetAuthor()).CheckIfEmailAreRegistered();
+        }
+
+        public bool CheckIfISBNAreRegistered(string isbn)
+        {
+            return new Controller(new BookFactory(BookFactory.OPTION.ISBN, isbn).GetBook()).CheckIfISBNAreRegistered();
         }
     }
 }

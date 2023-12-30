@@ -30,11 +30,11 @@
                 <div class="col-md-offset-3 col-md-6 col-md-offset-3">
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="UserName" CssClass="control-label">Username</asp:Label>
-                        <asp:TextBox runat="server" ID="UserName" CssClass="form-control" Text="AndersonBook" ReadOnly="true" />
+                        <asp:TextBox runat="server" ID="UserName" CssClass="form-control" Text="Administrator" />
                     </div>
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="Password" CssClass="control-label">Password</asp:Label>
-                        <asp:TextBox runat="server" ID="Password" CssClass="form-control" TextMode="Password" ReadOnly="true" Text="" />
+                        <asp:TextBox runat="server" ID="Password" CssClass="form-control" TextMode="Password" Text="#Administrator01" />
                     </div>
                     <div class="form-group">
                         <asp:Button runat="server" OnClick="LogIn" Text="Login" CssClass="btn btn-success pull-right col-md-4" />
@@ -53,38 +53,6 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        $("#MainContent_Password").val("AndersonBook81");
-    </script>
-
-    <style>
-        .valsum {
-            background-color: #FFFF99;
-            color: red;
-            border: 3px solid red;
-            border-radius: 7px;
-            font-weight: bold;
-        }
-
-        body {
-            background-color: #babfff;
-        }
-
-        .control-label {
-            font-weight: bold;
-        }
-
-        .form-control {
-            border: 2px solid black;
-        }
-
-        hr {
-            border: 3px solid black;
-        }
-
-        .input-group-addon {
-            border: 2px solid black;
-        }
-    </style>
-
+    <link href="../Content/customs/Account/login.css" rel="stylesheet" />
+    <script src="../Scripts/customs/Account/login.js"></script>
 </asp:Content>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebBook.Services;
 
 namespace WebBook.Registration.Books
 {
@@ -14,15 +15,27 @@ namespace WebBook.Registration.Books
         private static int id;
         private static string isbn;
 
+        private Crud crud = null;
+        private Modal modal = null;
+        private Convertion convertion = null;
+
+        public Details()
+        {
+            this.crud = Crud.getInstance();
+            this.convertion = Convertion.getInstance();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Book";
+
+            this.modal = Modal.getInstance(this);
 
             if (Request.IsAuthenticated)
             {
                 if (!this.IsPostBack)
                 {
-                    AuthorBook authorBook = Crud.GetBookByISBN(Request.QueryString["ISBN"]);
+                    AuthorBook authorBook = crud.GetBookByISBN(Request.QueryString["ISBN"]);
                     if (authorBook != null)
                     {
                         id = authorBook.Author.Id;
@@ -36,9 +49,7 @@ namespace WebBook.Registration.Books
                         this.lblPage.Text = authorBook.Book.Page.ToString();
                         this.lblPrice.Text = authorBook.Book.Price.ToString();
 
-                        var base64 = Convert.ToBase64String(authorBook.Book.Picture);
-                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                        this.imgPictureBookDetail.ImageUrl = imgSrc;
+                        this.imgPictureBookDetail.ImageUrl = this.convertion.ConvertByteToBase64(authorBook.Book.Picture);
 
                         this.hplnkRetDet.NavigateUrl = "../../Registration/Authors/Details.aspx?Id=" + id;
                         this.hplnkEditDet.NavigateUrl = "../../Registration/Books/Edit.aspx?ISBN=" + isbn;
@@ -47,19 +58,19 @@ namespace WebBook.Registration.Books
                     }
                     else
                     {
-                        Response.Redirect("Authors/Search.aspx");
+                        Response.RedirectPermanent("Authors/Index.aspx");
                     }
                 }
             }
             else
             {
-                Response.Redirect("~/Account/Login.aspx");
+                Response.RedirectPermanent("~/Account/Login.aspx");
             }
         }
 
         private void ShowModal(string title, string message, int opc)
         {
-            Response.Write("<script   src='https://code.jquery.com/jquery-2.2.4.min.js'   integrity='sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44='   crossorigin='anonymous'></script>     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script><div id='modalMessage' class='modal fade' role='dialog'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal'>&times;</button><h4 class='modal-title' id='titleMsg'></h4></div><div class='modal-body'><p id='msgMsg'></p></div><div class='modal-footer'><button type='button' class='btn btn-default btn-primary' data-dismiss='modal'>Ok</button></div></div></div></div><script>$('#titleMsg').text('" + title + "');$('#msgMsg').text('" + message + "');$('#modalMessage').modal('show');</script>");
+            this.modal.ShowModal(title, message);
         }
     }
 }

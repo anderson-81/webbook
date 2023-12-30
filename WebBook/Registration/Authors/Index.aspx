@@ -40,10 +40,10 @@
                         <Columns>
                             <asp:BoundField DataField="ArtisticName" HeaderText="Artistic Name" />
                             <asp:BoundField DataField="Name" HeaderText="Name" />
-                            <asp:BoundField DataField="Birthday" HeaderText="Birthday" DataFormatString="{0:dd/MM/yyyy}" />
-                            <asp:BoundField DataField="Id" HtmlEncode="False" DataFormatString="<a target='_blank' href='Details.aspx?Id={0}'><img class='details-ico' src='../../Content/images/details-ico.png'></a>" >
-                            <HeaderStyle HorizontalAlign="Center" />
-                            <ItemStyle HorizontalAlign="Center" />
+                            <asp:BoundField DataField="Birthday" HeaderText="Birthday" DataFormatString="{0:MM/dd/yyyy}" />
+                            <asp:BoundField DataField="Id" HtmlEncode="False" DataFormatString="<a target='_self' href='Details.aspx?Id={0}'><img class='details-ico' src='../../Content/images/details-ico.png'></a>">
+                                <HeaderStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" />
                             </asp:BoundField>
                         </Columns>
                         <EditRowStyle BackColor="#999999" />
@@ -75,44 +75,5 @@
         </div>
     </div>
     <!-- Create -->
-
-
-    <style>
-        body {
-            background-color: #babfff;
-        }
-
-        .control-label {
-            font-weight: bold;
-        }
-
-        .form-control {
-            border: 2px solid black;
-        }
-
-        hr {
-            border: 3px solid black;
-        }
-
-        #MainContent_btnSearch {
-            border: 1px solid black;
-            border-radius: 4px;
-            border-top-left-radius: 0px;
-            border-bottom-left-radius: 0px;
-        }
-
-        .pad-5 {
-            padding-top: 3%;
-        }
-
-        .details-ico {
-            width: 20px;
-            height: 20px;
-        }
-    </style>
-
-    <script>
-        $("#MainContent_txtData").attr("placeholder", "Search for...");
-    </script>
-
+    <link href="../../Content/customs/Author/index.css" rel="stylesheet" />
 </asp:Content>

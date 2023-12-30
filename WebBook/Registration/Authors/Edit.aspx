@@ -52,15 +52,15 @@
         <div class="col-md-offset-2 col-md-8 col-md-offset-2">
             <div class="form-group">
                 <asp:Label ID="lblName" CssClass="control-label" runat="server" Text="Name"></asp:Label>
-                <asp:TextBox ID="txtName" CssClass="form-control" runat="server" MaxLength="100"></asp:TextBox>
+                <asp:TextBox ID="txtName" CssClass="form-control" runat="server" MaxLength="45"></asp:TextBox>
             </div>
             <div class="form-group">
                 <asp:Label ID="lblArtisticName" CssClass="control-label" runat="server" Text="Artistic Name"></asp:Label>
-                <asp:TextBox ID="txtArtisticName" CssClass="form-control" runat="server" MaxLength="100" TabIndex="1"></asp:TextBox>
+                <asp:TextBox ID="txtArtisticName" CssClass="form-control" runat="server" MaxLength="45" TabIndex="1"></asp:TextBox>
             </div>
             <div class="form-group">
                 <asp:Label ID="lblEmail" CssClass="control-label" runat="server" Text="E-mail"></asp:Label><br />
-                <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" MaxLength="100" TabIndex="2"></asp:TextBox>
+                <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" MaxLength="45" TabIndex="2"></asp:TextBox>
             </div>
             <div class="form-group">
                 <asp:Label ID="lblBirthday" CssClass="control-label" runat="server" Text="Birthday"></asp:Label><br />
@@ -80,12 +80,13 @@
             </div>
             <div class="form-group">
                 <asp:Label ID="lblPicture" CssClass="control-label" runat="server" Text="Picture"></asp:Label>
-                <asp:HyperLink ID="hpCurrentImage" CssClass="pull-right" runat="server" Text="Current Image" TabIndex="9" />
+                <%--<asp:HyperLink ID="hpCurrentImage" CssClass="pull-right" runat="server" Text="Current Image" TabIndex="9" />--%>
+                <asp:Image ID="imgPicture" Name="imgPicture" runat="server" CssClass="imgPicture pull-right" />
                 <asp:FileUpload ID="upPictureAuthor" CssClass="form-control" runat="server" TabIndex="5" />
             </div>
             <div class="form-group">
                 <asp:Label ID="lblBiography" CssClass="control-label" runat="server" Text="Biography"></asp:Label><br />
-                <asp:TextBox ID="txtBiography" CssClass="form-control" Style="resize: none;" runat="server" TextMode="MultiLine" Width="100%" MaxLength="8000" TabIndex="6"></asp:TextBox>
+                <asp:TextBox ID="txtBiography" CssClass="form-control" Style="resize: none;" runat="server" TextMode="MultiLine" Width="100%" MaxLength="5000" TabIndex="6"></asp:TextBox>
             </div>
             <!-- Actions -->
             <% if (Request.IsAuthenticated)
@@ -93,7 +94,7 @@
             <div class="form-group">
                 <button type="button" class="btn btn-warning col-md-2 pull-right" data-toggle="modal" data-target="#modalEdit" tabindex="7">Edit</button>
                 <button type="button" class="btn btn-danger col-md-2 pull-right" data-toggle="modal" data-target="#modalDelete" tabindex="8">Delete</button>
-                <asp:HyperLink ID="hplnkRetDet" CssClass="btn btn-secondary col-md-2 pull-right" runat="server" Text="Return" TabIndex="9" />
+                <asp:HyperLink ID="hplnkRetDet" CssClass="btn btn-default col-md-2 pull-right" runat="server" Text="Return" TabIndex="9" />
             </div>
             <%} %>
             <!-- Actions -->
@@ -153,46 +154,6 @@
         </div>
     </div>
     <!-- Modals -->
-
-    <script type="text/javascript">
-        $(function () {
-
-            $('#dtpBirthday').datetimepicker({
-                locale: 'pt-BR',
-                viewMode: 'years',
-                format: "DD/MM/YYYY"
-            });
-        });
-    </script>
-
-    <style>
-        .valsum {
-            background-color: #FFFF99;
-            color: red;
-            border: 3px solid red;
-            border-radius: 7px;
-            font-weight: bold;
-        }
-
-        body {
-            background-color: #babfff;
-        }
-
-        .control-label {
-            font-weight: bold;
-        }
-
-        .form-control {
-            border: 2px solid black;
-        }
-
-        hr {
-            border: 3px solid black;
-        }
-
-        .input-group-addon {
-            border: 2px solid black;
-        }
-    </style>
-
+    <link href="../../Content/customs/Author/edit.css" rel="stylesheet" />
+    <script src="../../Scripts/customs/components/datetimepicker.js"></script>
 </asp:Content>

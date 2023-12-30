@@ -1,0 +1,27 @@
+﻿.valsum {
+    background-color: #FFFF99;
+    color: red;
+    border: 3px solid red;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+body {
+    background-color: #babfff;
+}
+
+.control-label {
+    font-weight: bold;
+}
+
+.form-control {
+    border: 2px solid black;
+}
+
+hr {
+    border: 3px solid black;
+}
+
+.input-group-addon {
+    border: 2px solid black;
+}

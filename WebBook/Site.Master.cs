@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebBook.Services;
 
 namespace WebBook
 {
@@ -66,14 +67,15 @@ namespace WebBook
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             Context.GetOwinContext().Authentication.SignOut();
+        }
+
+        public static void ShowModal(string title, string message, Page p)
+        {
+            Modal modal = Modal.getInstance(p);
+            modal.ShowModal(title, message);
         }
     }
 

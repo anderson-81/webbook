@@ -51,7 +51,7 @@
             </div>
             <div class="form-group">
                 <asp:Label ID="lblISBN" runat="server" CssClass="control-label" Text="ISBN"></asp:Label>
-                <asp:TextBox ID="txtISBN" runat="server" MaxLength="13" TabIndex="1" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="txtISBN" runat="server" MaxLength="13" TabIndex="1" ReadOnly="true" CssClass="form-control field-readonly" BackColor="Silver"></asp:TextBox>
             </div>
             <div class="form-group">
                 <asp:Label ID="lblPages" runat="server" CssClass="control-label" Text="Pages"></asp:Label>
@@ -63,7 +63,8 @@
             </div>
             <div class="form-group">
                 <asp:Label ID="lblPicture" runat="server" CssClass="control-label" Text="Picture"></asp:Label>
-                <asp:HyperLink ID="hpCurrImage" Name="hpCurrImage" CssClass="pull-right" runat="server" Font-Bold="true" Text="Current Image" TabIndex="9" />
+                <asp:Image ID="imgPicture" Name="imgPicture" runat="server" CssClass="imgPicture pull-right" />
+                <%--<asp:HyperLink ID="hpCurrImage" Name="hpCurrImage" CssClass="pull-right" runat="server" Font-Bold="true" Text="Current Image" TabIndex="9" Target="" />--%>
                 <asp:FileUpload ID="upPictBook" CssClass="form-control" runat="server" TabIndex="4" />
             </div>
             <div class="form-group">
@@ -131,49 +132,7 @@
         </div>
     </div>
     <!-- Modals -->
-
-    <script>
-        $(function () {
-            $('.currency').maskMoney({ thousands: '', decimal: ',' });
-        });
-        $('#MainContent_btnEdit').attr("data-dismiss", "modal");
-        $('#MainContent_btnDelete').attr("data-dismiss", "modal");
-    </script>
-
-    <style>
-        .valsum {
-            background-color: #FFFF99;
-            color: red;
-            border: 3px solid red;
-            border-radius: 7px;
-            font-weight: bold;
-        }
-
-        body {
-            background-color: #babfff;
-        }
-
-        .control-label {
-            font-weight: bold;
-        }
-
-        .form-control {
-            border: 2px solid black;
-        }
-
-        hr {
-            border: 3px solid black;
-        }
-
-        .input-group-addon {
-            border: 2px solid black;
-        }
-
-        .field-readonly {
-            background-color: #878787;
-            font-weight: bold;
-        }
-    </style>
-
-
+    <script src="../../Scripts/customs/components/currency.js"></script>
+    <script src="../../Scripts/customs/Book/edit.js"></script>
+    <link href="../../Content/customs/Book/edit.css" rel="stylesheet" />
 </asp:Content>

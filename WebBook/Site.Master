@@ -14,7 +14,6 @@
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/Content/images/favicon.png" rel="shortcut icon" type="image/x-icon" />
-
 </head>
 <body>
     <form runat="server">
@@ -56,7 +55,6 @@
                         <% if (Request.IsAuthenticated)
                            {%>
                         <li><a runat="server" href="~/Registration/Authors/Index.aspx">Registration</a></li>
-                        <li><a runat="server" href="~/Reports/Index.aspx">Reports</a></li>
                         <% }%>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
@@ -108,16 +106,24 @@
             </div>
         </div>
 
-        <script type="text/javascript">
-            $(function () {
-                $("#").click(function () {
-                    $("#modalLogoff").modal("show");
-                });
-            });
-        </script>
+        <div id="modaltest" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Teste!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal Teste!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-
+        <script src="../../Scripts/customs/Account/logoff.js"></script>
     </form>
 </body>
 </html>

@@ -42,9 +42,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.3.7\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
     </Reference>
-    <Reference Include="LibCrud, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LibCrud\bin\Release\LibCrud.dll</HintPath>
+    <Reference Include="LibCrud">
+      <HintPath>..\LibCrud\bin\Debug\LibCrud.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
@@ -153,9 +152,9 @@
   <ItemGroup>
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
-    <Content Include="App_Data\dbStore.mdf" />
-    <Content Include="App_Data\dbStore_log.ldf">
-      <DependentUpon>dbStore.mdf</DependentUpon>
+    <Content Include="App_Data\dbWebBook.mdf" />
+    <Content Include="App_Data\dbWebBook_log.ldf">
+      <DependentUpon>dbWebBook.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
@@ -163,19 +162,25 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\customs\Author\create.css" />
+    <Content Include="Content\customs\Account\login.css" />
+    <Content Include="Content\customs\Author\details.css" />
+    <Content Include="Content\customs\Author\edit.css" />
+    <Content Include="Content\customs\Author\index.css" />
+    <Content Include="Content\customs\Book\create.css" />
+    <Content Include="Content\customs\Book\details.css" />
+    <Content Include="Content\customs\Book\edit.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\black.jpg" />
     <Content Include="Content\images\details-ico.png" />
     <Content Include="Content\images\favicon.png" />
     <Content Include="Content\images\wall.jpg" />
     <Content Include="Content\Site.css" />
-    <Content Include="crud.aspx" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="packages.config" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap\wells.less" />
     <Content Include="Content\bootstrap\variables.less" />
     <Content Include="Content\bootstrap\utilities.less" />
@@ -249,36 +254,10 @@
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <Content Include="Content\_bootstrap-datetimepicker.less" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="dbStoreDataSet1.xsc">
-      <DependentUpon>dbStoreDataSet1.xsd</DependentUpon>
-    </Content>
-    <None Include="dbStoreDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dbStoreDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="dbStoreDataSet1.xss">
-      <DependentUpon>dbStoreDataSet1.xsd</DependentUpon>
-    </Content>
-    <Content Include="Reports\DSAuthorBook.xsc">
-      <DependentUpon>DSAuthorBook.xsd</DependentUpon>
-    </Content>
-    <None Include="Reports\DSAuthorBook.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSAuthorBook.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="Reports\DSAuthorBook.xss">
-      <DependentUpon>DSAuthorBook.xsd</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Registration\Authors\Details.aspx" />
     <Content Include="Registration\Authors\Create.aspx" />
@@ -287,11 +266,17 @@
     <Content Include="Registration\Books\Edit.aspx" />
     <Content Include="Registration\Books\Create.aspx" />
     <Content Include="Registration\Books\Details.aspx" />
-    <Content Include="Reports\Index.aspx" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\customs\Account\login.js" />
+    <Content Include="Scripts\customs\Account\logoff.js" />
+    <Content Include="Scripts\customs\Author\index.js" />
+    <Content Include="Scripts\customs\Book\create.js" />
+    <Content Include="Scripts\customs\Book\edit.js" />
+    <Content Include="Scripts\customs\components\currency.js" />
+    <Content Include="Scripts\customs\components\datetimepicker.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.maskMoney.js" />
@@ -329,7 +314,9 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
@@ -357,18 +344,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="crud.aspx.cs">
-      <DependentUpon>crud.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="crud.aspx.designer.cs">
-      <DependentUpon>crud.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="dbStoreDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbStoreDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -430,17 +405,12 @@
     <Compile Include="Registration\Books\Details.aspx.designer.cs">
       <DependentUpon>Details.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\DSAuthorBook.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DSAuthorBook.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Services\Convertion.cs" />
+    <Compile Include="Services\Modal.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reports\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Services\Validation.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -461,9 +431,6 @@
   <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Reports\ReportAuthorBook.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

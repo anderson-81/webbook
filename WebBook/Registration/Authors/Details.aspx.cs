@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebBook.Services;
 
 namespace WebBook.Registration.Authors
 {
@@ -13,15 +14,27 @@ namespace WebBook.Registration.Authors
     {
         private int id;
 
+        private Crud crud = null;
+        private Modal modal = null;
+        private Convertion convertion = null;
+
+        public Details()
+        {
+            this.crud = Crud.getInstance();
+            this.convertion = Convertion.getInstance();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = "Author";
+
+            this.modal = Modal.getInstance(this);
 
             if (Request.IsAuthenticated)
             {
                 try
                 {
-                    Author author = Crud.GetAuthorByID(Int32.Parse(Request.QueryString["id"]));
+                    Author author = crud.GetAuthorByID(Int32.Parse(Request.QueryString["id"]));
                     if (author != null)
                     {
                         this.id = author.Id;
@@ -41,14 +54,13 @@ namespace WebBook.Registration.Authors
                         }
                         this.lblBiographyDet.Text = author.Biography;
 
-                        var base64 = Convert.ToBase64String(author.Picture);
-                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                        this.imgPictureDetail.ImageUrl = imgSrc;
+                        this.imgPictureDetail.ImageUrl = this.convertion.ConvertByteToBase64(author.Picture);
+
                         this.hplnkEditDet.NavigateUrl = "~/Registration/Authors/Edit.aspx?Id=" + this.id;
                         this.hplnkCreateBook.NavigateUrl = "~/Registration/Books/Create.aspx?Id=" + this.id;
 
-                        List<Book> books = Crud.GetBookByAuthorID(Int32.Parse(Request.QueryString["id"]));
-                        
+                        List<Book> books = crud.GetBookByAuthorID(Int32.Parse(Request.QueryString["id"]));
+
                         if (books != null)
                         {
 
@@ -64,28 +76,28 @@ namespace WebBook.Registration.Authors
                     }
                     else
                     {
-                        Response.Redirect("Index.aspx");
+                        Response.RedirectPermanent("Index.aspx");
                     }
                 }
                 catch (Exception)
                 {
-                    Response.Redirect("Index.aspx");
+                    Response.RedirectPermanent("Index.aspx");
                 }
             }
             else
             {
-                Response.Redirect("~/Account/Login.aspx");
+                Response.RedirectPermanent("~/Account/Login.aspx");
             }
         }
 
-        private void ShowModal(string title, string message)
+        private void ShowModal(string p1, string p2)
         {
-            Response.Write("<script   src='https://code.jquery.com/jquery-2.2.4.min.js'   integrity='sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44='   crossorigin='anonymous'></script>     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script><div id='modalMessage' class='modal fade' role='dialog'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal'>&times;</button><h4 class='modal-title' id='titleMsg'></h4></div><div class='modal-body'><p id='msgMsg'></p></div><div class='modal-footer'><button type='button' class='btn btn-default btn-primary' data-dismiss='modal'>Ok</button></div></div></div></div><script>$('#titleMsg').text('" + title + "');$('#msgMsg').text('" + message + "');$('#modalMessage').modal('show');</script>");
+            this.modal.ShowModal(p1, p2);
         }
 
         private void FillGrid(int p_id)
         {
-            List<Book> books = Crud.GetBookByAuthorID(p_id);
+            List<Book> books = crud.GetBookByAuthorID(p_id);
             this.gridViewBooksAuthor.DataSource = books;
             this.gridViewBooksAuthor.DataBind();
         }

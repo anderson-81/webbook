@@ -58,62 +58,9 @@
             <% if (Request.IsAuthenticated)
             { %>
                 <asp:HyperLink ID="hplnkEditDet" CssClass="btn btn-warning col-md-2 pull-right" runat="server" Text="Edit" TabIndex="0" />
-                <asp:HyperLink ID="hplnkRetDet" CssClass="btn btn-secondary col-md-2 pull-right" runat="server" Text="Return" TabIndex="1" />
+                <asp:HyperLink ID="hplnkRetDet" CssClass="btn btn-default col-md-2 pull-right" runat="server" Text="Return" TabIndex="1" />
             <%} %>
         </div>
     </div>
-
-
-    <style>
-        .valsum {
-            background-color: #FFFF99;
-            color: red;
-            border: 3px solid red;
-            border-radius: 7px;
-            font-weight: bold;
-        }
-
-        body {
-            background-color: #babfff;
-        }
-
-        hr {
-            border: 3px solid black;
-        }
-
-        .input-group-addon {
-            border: 2px solid black;
-        }
-
-        .mg-5 {
-            margin-top: 5%;
-        }
-
-        .details-ico {
-            width: 20px;
-            height: 20px;
-        }
-
-        .border-img {
-            border: 3px solid black;
-            border-radius: 5px;
-        }
-
-        .lbl-field {
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .lbl-data-title {
-            font-size: 22px;
-            font-weight: bold;
-        }
-        
-        .img-details{
-            width:200px;
-            height:200px;
-        }
-
-    </style>
-
+    <link href="../../Content/customs/Book/details.css" rel="stylesheet" />
 </asp:Content>

@@ -39,12 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="classes\Author.cs" />
-    <Compile Include="classes\AuthorBook.cs" />
-    <Compile Include="classes\Book.cs" />
-    <Compile Include="classes\Connection.cs" />
-    <Compile Include="classes\Controller.cs" />
-    <Compile Include="classes\IPerson.cs" />
+    <Compile Include="Factories\AuthorBookFactory.cs" />
+    <Compile Include="Factories\AuthorFactory.cs" />
+    <Compile Include="Factories\BookFactory.cs" />
+    <Compile Include="Models\Entities\Author.cs" />
+    <Compile Include="Models\Entities\AuthorBook.cs" />
+    <Compile Include="Models\Entities\Book.cs" />
+    <Compile Include="Factories\ConnectionFactory.cs" />
+    <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Models\Interfaces\IPerson.cs" />
     <Compile Include="Crud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

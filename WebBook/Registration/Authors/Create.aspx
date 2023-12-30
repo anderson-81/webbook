@@ -54,15 +54,15 @@
         <div class="col-md-offset-2 col-md-8 col-md-offset-2">
             <div class="form-group">
                 <asp:Label ID="lblName" CssClass="control-label" runat="server" Text="Name"></asp:Label>
-                <asp:TextBox ID="txtName" CssClass="form-control" runat="server" MaxLength="100"></asp:TextBox>
+                <asp:TextBox ID="txtName" CssClass="form-control" runat="server" MaxLength="45"></asp:TextBox>
             </div>
             <div class="form-group">
-                <asp:Label ID="lblArtisticName" CssClass="control-label"  runat="server" Text="Artistic Name"></asp:Label>
-                <asp:TextBox ID="txtArtisticName" CssClass="form-control" runat="server" MaxLength="100" TabIndex="1"></asp:TextBox>
+                <asp:Label ID="lblArtisticName" CssClass="control-label" runat="server" Text="Artistic Name"></asp:Label>
+                <asp:TextBox ID="txtArtisticName" CssClass="form-control" runat="server" MaxLength="45" TabIndex="1"></asp:TextBox>
             </div>
             <div class="form-group">
-                <asp:Label ID="lblEmail"  CssClass="control-label" runat="server" Text="E-mail"></asp:Label><br />
-                <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" MaxLength="100" TabIndex="2"></asp:TextBox>
+                <asp:Label ID="lblEmail" CssClass="control-label" runat="server" Text="E-mail"></asp:Label><br />
+                <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" MaxLength="45" TabIndex="2"></asp:TextBox>
             </div>
             <div class="form-group">
                 <asp:Label ID="lblBirthday" CssClass="control-label" runat="server" Text="Birthday"></asp:Label><br />
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <asp:Label ID="lblGender" CssClass="control-label"  runat="server" Text="Gender"></asp:Label>
+                <asp:Label ID="lblGender" CssClass="control-label" runat="server" Text="Gender"></asp:Label>
                 <asp:DropDownList ID="dpGender" runat="server" CssClass="form-control" TabIndex="4">
                     <asp:ListItem Selected="True" Value="M">Male</asp:ListItem>
                     <asp:ListItem Value="F">Female</asp:ListItem>
@@ -82,66 +82,26 @@
             </div>
 
             <div class="form-group">
-                <asp:Label ID="lblPicture"  CssClass="control-label" runat="server" Text="Picture"></asp:Label>
+                <asp:Label ID="lblPicture" CssClass="control-label" runat="server" Text="Picture"></asp:Label>
                 <asp:FileUpload ID="upPictureAuthor" CssClass="form-control" runat="server" TabIndex="5" />
             </div>
             <div class="form-group">
-                <asp:Label ID="lblBiography" CssClass="control-label"  runat="server" Text="Biography"></asp:Label><br />
-                <asp:TextBox ID="txtBiography"  CssClass="form-control" style="resize:none;" runat="server" TextMode="MultiLine" Width="100%" MaxLength="8000" TabIndex="6"></asp:TextBox>
+                <asp:Label ID="lblBiography" CssClass="control-label" runat="server" Text="Biography"></asp:Label><br />
+                <asp:TextBox ID="txtBiography" CssClass="form-control" Style="resize: none;" runat="server" TextMode="MultiLine" Width="100%" MaxLength="5000" TabIndex="6"></asp:TextBox>
             </div>
             <!-- Actions -->
             <% if (Request.IsAuthenticated)
                { %>
             <div class="form-group">
                 <asp:Button Text="Create" CssClass="btn btn-success col-md-2 pull-right" ID="btnCreate" runat="server" OnClick="btnCreate_Click" TabIndex="7" />
-                <input type="reset" class="btn btn-default col-md-2 pull-right" name="btnReset" value="Reset" tabindex="8" />
-                <asp:HyperLink ID="hplnkRetDet" CssClass="btn btn-secondary col-md-2 pull-right" runat="server" NavigateUrl="~/Registration/Authors/Index.aspx" Text="Return" TabIndex="9" />
+                <input type="reset" class="btn btn-info col-md-2 pull-right" name="btnReset" value="Reset" tabindex="8" />
+                <asp:HyperLink ID="hplnkRetDet" CssClass="btn btn-default col-md-2 pull-right" runat="server" NavigateUrl="~/Registration/Authors/Index.aspx" Text="Return" TabIndex="9" />
             </div>
             <%} %>
             <!-- Actions -->
         </div>
     </div>
     <!-- Registration -->
-
-    <script type="text/javascript">
-        $(function () {
-
-            $('#dtpBirthday').datetimepicker({
-                locale: 'pt-BR',
-                viewMode: 'years',
-                format: "DD/MM/YYYY"
-            });
-        });
-    </script>
-
-    <style>
-        .valsum{
-            background-color:#FFFF99;
-            color:red;
-            border:3px solid red;
-            border-radius:7px;
-            font-weight:bold;
-        }
-
-        body{
-            background-color:#babfff;
-        }
-
-        .control-label{
-            font-weight:bold;
-        }
-        
-        .form-control{
-            border:2px solid black;
-        }
-
-        hr{
-            border:3px solid black;
-        }
-
-        .input-group-addon{
-             border:2px solid black;
-        }
-
-    </style>
+    <link href="../../Content/customs/Author/create.css" rel="stylesheet" />
+    <script src="../../Scripts/customs/components/datetimepicker.js"></script>
 </asp:Content>

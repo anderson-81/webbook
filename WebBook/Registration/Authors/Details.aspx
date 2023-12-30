@@ -80,7 +80,7 @@
                             <Columns>
                                 <asp:BoundField DataField="Title" HeaderText="Title" />
                                 <asp:BoundField DataField="ISBN" HeaderText="ISBN" />
-                                <asp:BoundField DataField="ISBN" HtmlEncode="False" DataFormatString="<a target='_blank' href='../../Registration/Books/Details.aspx?ISBN={0}'><img class='details-ico' src='../../Content/images/details-ico.png'></a>">
+                                <asp:BoundField DataField="ISBN" HtmlEncode="False" DataFormatString="<a target='_self' href='../../Registration/Books/Details.aspx?ISBN={0}'><img class='details-ico' src='../../Content/images/details-ico.png'></a>">
                                     <ItemStyle HorizontalAlign="Center" />
                                 </asp:BoundField>
                             </Columns>
@@ -106,54 +106,5 @@
             </div>
         </div>
     </div>
-    <style>
-        .valsum {
-            background-color: #FFFF99;
-            color: red;
-            border: 3px solid red;
-            border-radius: 7px;
-            font-weight: bold;
-        }
-
-        body {
-            background-color: #babfff;
-        }
-
-        hr {
-            border: 3px solid black;
-        }
-
-        .input-group-addon {
-            border: 2px solid black;
-        }
-
-        .mg-5 {
-            margin-top: 5%;
-        }
-
-        .details-ico {
-            width: 20px;
-            height: 20px;
-        }
-
-        .border-img {
-            border: 3px solid black;
-            border-radius: 5px;
-        }
-
-        .lbl-field {
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .lbl-data-artisticname {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .img-details {
-            width: 200px;
-            height: 200px;
-        }
-    </style>
+    <link href="../../Content/customs/Author/details.css" rel="stylesheet" />
 </asp:Content>

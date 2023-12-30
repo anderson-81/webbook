@@ -47,19 +47,19 @@
             </div>
             <div class="form-group">
                 <asp:Label ID="lblTitle" runat="server" CssClass="control-label" Text="Title"></asp:Label>
-                <asp:TextBox ID="txtTitle" runat="server" MaxLength="100" TabIndex="0" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="txtTitle" runat="server" MaxLength="45" TabIndex="0" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="form-group">
                 <asp:Label ID="lblISBN" runat="server" CssClass="control-label" Text="ISBN"></asp:Label>
-                <asp:TextBox ID="txtISBN" runat="server" MaxLength="13" TabIndex="1" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="txtISBN" runat="server" MaxLength="14" TabIndex="1" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="form-group">
                 <asp:Label ID="lblPages" runat="server" CssClass="control-label" Text="Pages"></asp:Label>
-                <asp:TextBox ID="txtPages" runat="server" TextMode="Number" min="1" CssClass="form-control" AutoPostBack="true" MaxLength="6" TabIndex="2" OnTextChanged="txtPages_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="txtPages" runat="server" CssClass="form-control" AutoPostBack="true" MaxLength="5" TabIndex="2" OnTextChanged="txtPages_TextChanged"></asp:TextBox>
             </div>
             <div class="form-group">
                 <asp:Label ID="lblPrice" runat="server" CssClass="control-label" Text="Price"></asp:Label>
-                <asp:TextBox ID="txtPrice" CssClass="currency form-control" runat="server" MaxLength="14" TabIndex="3"></asp:TextBox>
+                <asp:TextBox ID="txtPrice" CssClass="currency form-control" runat="server" MaxLength="15" TabIndex="3"></asp:TextBox>
             </div>
             <div class="form-group">
                 <asp:Label ID="lblPicture" runat="server" CssClass="control-label" Text="Picture"></asp:Label>
@@ -70,56 +70,15 @@
                 <% if (Request.IsAuthenticated)
                    { %>
                 <asp:Button ID="btnInsert" runat="server" CssClass="btn btn-success pull-right col-md-2" Text="Insert" OnClick="btnInsert_Click" TabIndex="5" />
-                <input type="reset" name="btnReset" class="btn btn-default pull-right col-md-2" value="Reset" tabindex="6" />
-                <asp:HyperLink ID="hpRetCreateBook" CssClass="btn btn-secondary pull-right col-md-2" runat="server">Return</asp:HyperLink>
+                <button type="button" class="btn btn-info pull-right col-md-2" onclick="Reset();">Clear</button>
+                <asp:HyperLink ID="hpRetCreateBook" CssClass="btn btn-default pull-right col-md-2" runat="server">Return</asp:HyperLink>
                 <%} %>
                 <!-- Actions -->
             </div>
         </div>
     </div>
     <!-- Registration -->
-
-
-    <script>
-        $(function () {
-            $('.currency').maskMoney({ thousands: '', decimal: ',' });
-        })
-    </script>
-
-    <style>
-        .valsum {
-            background-color: #FFFF99;
-            color: red;
-            border: 3px solid red;
-            border-radius: 7px;
-            font-weight: bold;
-        }
-
-        body {
-            background-color: #babfff;
-        }
-
-        .control-label {
-            font-weight: bold;
-        }
-
-        .form-control {
-            border: 2px solid black;
-        }
-
-        hr {
-            border: 3px solid black;
-        }
-
-        .input-group-addon {
-            border: 2px solid black;
-        }
-
-        .field-readonly {
-            background-color: #878787;
-            font-weight: bold;
-        }
-    </style>
-
-
+    <script src="../../Scripts/customs/components/currency.js"></script>
+    <link href="../../Content/customs/Book/create.css" rel="stylesheet" />
+    <script src="../../Scripts/customs/Book/create.js"></script>
 </asp:Content>
